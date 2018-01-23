@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Tue Jan 23 17:59:08 NPT 2018
+0.baseType=DIRECTORY
+0.base=/home/sambad/AndroidStudioProjects/Library Book Finder/app/build/intermediates/assets/debug
+0.path=beep.mp3
+0.set=ASSET
+count=1
