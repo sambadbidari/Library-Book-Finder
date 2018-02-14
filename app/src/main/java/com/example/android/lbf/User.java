@@ -6,10 +6,11 @@ package com.example.android.lbf;
 
 public class User {
     public String id;
+    public String userName;
 
-
-    public User(String id) {
+    public User(String id, String userName) {
         this.id = id;
+        this.userName = userName;
     }
 
 }

@@ -7,13 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by sambad on 2/14/18.
+ * Created by amardeep on 10/26/2017.
  */
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
     //DATABASE NAME
-    public static final String DATABASE_NAME = "user";
+    public static final String DATABASE_NAME = "library";
 
     //DATABASE VERSION
     public static final int DATABASE_VERSION = 1;
@@ -28,11 +28,19 @@ public class SqliteHelper extends SQLiteOpenHelper {
     //COLUMN user name
     public static final String KEY_USER_NAME = "username";
 
+    //COLUMN email
+    public static final String KEY_EMAIL = "email";
+
+    //COLUMN password
+    public static final String KEY_PASSWORD = "password";
+
     //SQL for creating users table
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_USERS
             + " ( "
             + KEY_ID + " INTEGER PRIMARY KEY, "
             + KEY_USER_NAME + " TEXT, "
+            + KEY_EMAIL + " TEXT, "
+            + KEY_PASSWORD + " TEXT"
             + " ) ";
 
 
@@ -74,12 +82,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
                 new String[]{KEY_ID, KEY_USER_NAME},//Selecting columns want to query
                 KEY_USER_NAME + "=?",
-                new String[]{user.username},//Where clause
+                new String[]{user.userName},//Where clause
                 null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             //if cursor has value then in user database there is user associated with this given email
-            User user1 = new User(cursor.getString(0));
+            User user1 = new User(cursor.getString(0), cursor.getString(1));
         }
 
         //if user password does not matches or there is no record with that email then return @false
