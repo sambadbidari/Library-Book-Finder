@@ -32,6 +32,8 @@ public class ScanActivity extends AppCompatActivity implements BarcodeReader.Bar
 
     @Override
     public void onScanned(Barcode barcode) {
+        mBarcodeReader.playBeep();
+
         // ticket details activity by passing barcode
         Intent intent = new Intent(ScanActivity.this, BookResultViewActivity.class);
         intent.putExtra("code", barcode.displayValue);
