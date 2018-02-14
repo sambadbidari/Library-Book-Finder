@@ -20,15 +20,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.android.lbf.MainActivity" >
+        <activity
+            android:name="com.example.android.lbf.first_activity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.android.lbf.ScanActivity" />
+        <activity
+            android:name="com.example.android.lbf.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.example.android.lbf.RegisterActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.android.lbf.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.android.lbf.ScanActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity android:name="com.example.android.lbf.BookResultViewActivity" />
         <activity android:name="com.example.android.lbf.BookInventoryViewActivity" />
 

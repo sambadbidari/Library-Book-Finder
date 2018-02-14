@@ -1,17 +1,14 @@
 package com.example.android.lbf;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.SparseArray;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.barcode.Barcode;
 
@@ -24,6 +21,7 @@ import info.androidhive.barcode.BarcodeReader;
  */
 
 public class LoginActivity extends AppCompatActivity implements BarcodeReader.BarcodeReaderListener{
+    Context mContext;
     SqliteHelper sqliteHelper;
     BarcodeReader mBarcodeReader;
 
@@ -56,11 +54,9 @@ public class LoginActivity extends AppCompatActivity implements BarcodeReader.Ba
         if (currentUser != null) {
             //User Logged in Successfully Launch You home screen activity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("code", barcode.displayValue);
             startActivity(intent);
             finish();
         } else {
-
             //User Logged in Failed
             Intent intent = new Intent(LoginActivity.this, first_activity.class);
             startActivity(intent);

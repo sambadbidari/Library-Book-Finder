@@ -87,10 +87,29 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             //if cursor has value then in user database there is user associated with this given email
-            User user1 = new User(cursor.getString(0), cursor.getString(1));
+            return new User(cursor.getString(0), cursor.getString(1));
         }
-
+        assert cursor != null;
+        cursor.close();
         //if user password does not matches or there is no record with that email then return @false
         return null;
+    }
+
+    public boolean isUserExists(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_USERS,// Selecting Table
+                new String[]{KEY_ID, KEY_USER_NAME},//Selecting columns want to query
+                KEY_USER_NAME + "=?",
+                new String[]{username},//Where clause
+                null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            //if cursor has value then in user database there is user associated with this given email so return true
+            return true;
+        }
+        assert cursor != null;
+        cursor.close();
+        //if email does not exist return false
+        return false;
     }
 }
